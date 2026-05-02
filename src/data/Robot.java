@@ -6,7 +6,42 @@ public class Robot {
 	private static int speed;
 	private static int turn;
 	private static int run=1;
-	
+
+	private static int parkingMode = 0;
+	private static float obstacleDistance = 0.20f;
+
+
+	public static int getParkingMode() {
+    return parkingMode;
+	}
+
+	public static void setParkingMode(int parkingMode) {
+		Robot.parkingMode = parkingMode;
+	}
+
+	public static void setParkingMode(String parkingMode) {
+		try {
+			Robot.parkingMode = Integer.parseInt(parkingMode);
+		} catch(Exception e) {
+			
+		}
+	}
+
+	public static float getObstacleDistance() {
+		return obstacleDistance;
+	}
+
+	public static void setObstacleDistance(float obstacleDistance) {
+		Robot.obstacleDistance = obstacleDistance;
+	}
+
+	public static void setObstacleDistance(String obstacleDistance) {
+		try {
+			Robot.obstacleDistance = Float.parseFloat(obstacleDistance);
+		} catch(Exception e) {
+			
+		}
+	}
 	
 	public static int getId() {
 		return id;
