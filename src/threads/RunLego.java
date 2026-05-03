@@ -26,12 +26,16 @@ public class RunLego implements Runnable {
             float distance = getDistance();
 
             if (Robot.getParkingMode() == 1 && !parked && distance < Robot.getObstacleDistance()) {
-			parkBackward();
-			parked = true;
-			Robot.setSpeed(0);
-			Robot.setRun(0); 
-			continue;
-			}
+                parkBackward();
+                parked = true;
+                
+                // Reporting the successful parking incident to the web service
+                SendData.sendIncident("Robot Parked Successfully");
+
+                Robot.setSpeed(0);
+                Robot.setRun(0); 
+                continue;
+            }
 
             motorA.setPower(Robot.turnRight());
             motorB.setPower(Robot.turnLeft());
@@ -66,7 +70,6 @@ public class RunLego implements Runnable {
         motorA.setPower(35);
         motorB.setPower(35);
 
-        
         motorA.forward();
         motorB.backward();
         sleep(1800);
@@ -75,7 +78,6 @@ public class RunLego implements Runnable {
         motorB.stop();
         sleep(300);
 
-        
         motorA.backward();
         motorB.backward();
         sleep(1900);
