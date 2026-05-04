@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import data.Robot;
 
 public class SettingsReader implements Runnable {
@@ -25,21 +24,23 @@ public class SettingsReader implements Runnable {
                     new InputStreamReader(conn.getInputStream())
                 );
 
-                String data = br.readLine();
+                String response = br.readLine();
 
-                String[] parts = data.split("#");
+                String[] parts = response.split("#");
 
-                // APPLY SETTINGS TO ROBOT
-                Robot.setRun(Integer.parseInt(parts[1]));
-                Robot.setSpeed(Integer.parseInt(parts[2]));
-                Robot.setTurn(Integer.parseInt(parts[3]));
-                Robot.setParkingMode(Integer.parseInt(parts[4]));
-                Robot.setObstacleDistance(Float.parseFloat(parts[5]));
+                if(parts.length >= 6) {
+
+                    Robot.setRun(Integer.parseInt(parts[1]));
+                    Robot.setSpeed(Integer.parseInt(parts[2]));
+                    Robot.setTurn(Integer.parseInt(parts[3]));
+                    Robot.setParkingMode(Integer.parseInt(parts[4]));
+                    Robot.setObstacleDistance(Float.parseFloat(parts[5]));
+                }
 
                 Thread.sleep(3000);
 
             } catch(Exception e) {
-                System.out.println("Settings read error");
+                System.out.println("Settings read error: " + e.getMessage());
             }
         }
     }
