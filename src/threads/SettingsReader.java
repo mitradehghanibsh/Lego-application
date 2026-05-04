@@ -14,6 +14,9 @@ public class SettingsReader implements Runnable {
         while (true) {
             try {
 
+                System.out.println("Fetching new settings from server...");
+
+
                 URL url = new URL("http://10.95.162.86:8080/rest/lego/getvalues");
 
                 HttpURLConnection conn =
