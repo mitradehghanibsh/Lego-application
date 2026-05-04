@@ -1,6 +1,7 @@
 package threads;
 
 import data.*;
+import threads.SettingsReader;
 import lejos.hardware.motor.UnregulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.SensorPort;
@@ -20,6 +21,8 @@ public class RunLego implements Runnable {
 
     @Override
     public void run() {
+        new Thread(new SettingsReader()).start();
+        
         while (Robot.getRun() == 1) {
             sleep(10);
 
