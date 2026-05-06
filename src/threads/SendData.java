@@ -9,7 +9,7 @@ public class SendData {
 
     public static void sendIncident(String message) {
         try {
-            URL url = new URL("http://10.95.162.86:8080/rest/lego/setvalues");
+            URL url = new URL("http://192.168.0.100:8080/rest/lego/setvalues");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");

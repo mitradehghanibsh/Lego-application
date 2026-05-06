@@ -29,7 +29,7 @@ public class ReadData implements Runnable{
 				e.printStackTrace();
 			}
 			try {
-				url = new URL("http://10.95.162.86:8080/rest/lego/getvalues");
+				url = new URL("http://192.168.0.100:8080/rest/lego/getvalues");
 				conn = (HttpURLConnection)url.openConnection();
 				InputStream is=null;
 				try {
@@ -43,6 +43,7 @@ public class ReadData implements Runnable{
 				isr = new InputStreamReader(is);
 	      		br=new BufferedReader(isr);
 				while ((s=br.readLine())!=null){
+		            System.out.println(s);
 					String [] values=s.split("#");
 					Robot.setId(values[0]);
 					Robot.setRun(values[1]);

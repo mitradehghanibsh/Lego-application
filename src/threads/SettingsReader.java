@@ -12,7 +12,7 @@ public class SettingsReader implements Runnable {
     public void run() {
         while (true) {
             try {
-                URL url = new URL("http://10.95.162.86:8080/rest/lego/getvalues");
+                URL url = new URL("http://192.168.0.100:8080/rest/lego/getvalues");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
                 conn.setRequestMethod("GET");
